@@ -1,51 +1,57 @@
-function umeditor_init(element) {
-	var child = document.getElementById("myeditor01");
-	if (child == null)
-		element.innerHTML = "<textarea id=\"myeditor01\" style=\"width:700px;height:300px;\"></textarea>";
+function loadjscssfile(filename, filetype) {
+	if (filetype == "js") { // if filename is a external JavaScript file
+		var fileref = document.createElement('script');
+		fileref.setAttribute("type", "text/javascript");
+		fileref.setAttribute("src", filename);
+	} else if (filetype == "css") { // if filename is an external CSS file
+		var fileref = document.createElement("link");
+		fileref.setAttribute("rel", "stylesheet");
+		fileref.setAttribute("type", "text/css");
+		fileref.setAttribute("href", filename);
+	}
+	if (typeof fileref != "undefined")
+		document.getElementsByTagName("head")[0].appendChild(fileref);
 }
 
+(function(){
+	var servletcontext = /^https?:\/\/[^\/]+(\/[^\/]+)\/.*/.exec(window.location.href)[1];
+	loadjscssfile(servletcontext + "/umeditor/themes/default/css/umeditor.css","css");
+})();
+
 window.cn_jhc_um_vaadin_js_UMEditorField = function() {
-	console.log("connectid:" + this.getConnectorId() + ",parentid:" + this.getParentId());
-	umeditor_init(this.getElement());
-
-	var connector = this;
-	var editor = window.UM.getEditor("myeditor01");
-
-	// editor.addListener("contentchange", function(){
-	// console.log("contentchange: " +
-	// document.getElementsByClassName("edui-body-container")[0].innerHTML);
-	// });
-	connector.updateValue = function() {
-
-		// console.log("editor,updateValue:" + editor.getContent());
-		// editor.ready(function(){
-		// console.log("editor,updateValue:" + editor.getContent());
-		// });
-//		console
-//				.log("updatevalue: "
-//						+ document
-//								.getElementsByClassName("edui-body-container")[0].innerHTML);
-		connector.onValueChange(editor.getContent());
-	};
+//	console.log("connectid:" + this.getConnectorId() + ",parentid:"
+//			+ this.getParentId());
 	var elm = this.getElement();
-	editor.ready(function(){
-	console.log("inner:" + elm.innerHTML);
-	var umcontainer = elm.getElementsByClassName("edui-body-container")[0];
-	umcontainer.onblur = function(){
-		console.log("onblur called: ");
-		connector.updateValue();
+	var um_textarea_id = "myumeditor" + this.getConnectorId();
+	if(document.getElementById(um_textarea_id) == null){
+		elm.innerHTML = "<textarea id=\"" + um_textarea_id + "\" style=\"width:700px;height:300px;\"></textarea>"
+	}
+	var connector = this;
+	var editor = window.UM.getEditor(um_textarea_id);
+
+	connector.updateValue = function() {
+		var newvalue = editor.getContent();
+		if(connector.old_editor_value !== newvalue) {
+			connector.onValueChange(newvalue);
+			connector.old_editor_value = newvalue;
+		}
 	};
+	
+	editor.ready(function() {
+		var umcontainer = elm.getElementsByClassName("edui-body-container")[0];
+		umcontainer.onblur = function() {
+			console.log("onblur called: ");
+			connector.updateValue();
+		};
 	});
 
-	
 	connector.onStateChange = function() {
 		var newvalue = connector.getState().value;
-		if (connector.oldvalue !== newvalue) {
+		if (connector.old_state_value !== newvalue) {
 			editor.ready(function() {
 				editor.setContent(newvalue);
 			});
-			connector.oldvalue = newvalue;
+			connector.old_state_value = newvalue;
 		}
-
 	};
 };

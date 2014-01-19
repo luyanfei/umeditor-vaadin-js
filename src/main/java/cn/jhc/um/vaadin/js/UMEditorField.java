@@ -8,8 +8,8 @@ import com.vaadin.annotations.JavaScript;
 import com.vaadin.ui.AbstractJavaScriptComponent;
 import com.vaadin.ui.JavaScriptFunction;
 
-@JavaScript({"http://libs.baidu.com/jquery/1.10.2/jquery.js","umeditor.config.js", 
-	"umeditor.js","umeditor-load.js","umeditor-connector.js"})
+@JavaScript({"http://libs.baidu.com/jquery/1.10.2/jquery.min.js","umeditor.config.js", 
+	"umeditor.js","umeditor-connector.js"})
 public class UMEditorField extends AbstractJavaScriptComponent {
 	
 	public UMEditorField() {
