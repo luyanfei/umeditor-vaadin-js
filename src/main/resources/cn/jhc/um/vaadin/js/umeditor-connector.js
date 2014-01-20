@@ -40,7 +40,7 @@ window.cn_jhc_um_vaadin_js_UMEditorField = function() {
 	editor.ready(function() {
 		var umcontainer = elm.getElementsByClassName("edui-body-container")[0];
 		umcontainer.onblur = function() {
-			console.log("onblur called: ");
+//			console.log("onblur called: ");
 			connector.updateValue();
 		};
 	});
