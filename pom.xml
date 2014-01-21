@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.jhc</groupId>
 	<artifactId>umeditor-vaadin-js</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>umeditor-vaadin-js</name>
 	<description>
