@@ -6,4 +6,5 @@ import com.vaadin.shared.ui.JavaScriptComponentState;
 public class UMEditorState extends JavaScriptComponentState {
 	public String value = "";
 	public boolean required = false;
+	public boolean modified = false;
 }
