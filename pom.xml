@@ -4,7 +4,39 @@
 	<groupId>cn.jhc</groupId>
 	<artifactId>umeditor-vaadin-js</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>umeditor-vaadin-js</name>
+	<description>
+	Vaadin wrapper for umeditor(https://github.com/campaign/umeditor). 
+	umeditor is the mini version of ueditor(http://ueditor.baidu.com/website/), which is a versatile rich text editor. 
+	umeditor has been used in http://tieba.baidu.com, and has proven to be an efficient editor. 
+	umeditor-vaadin-js dependends on umeditor-fragment(https://github.com/luyanfei/umeditor-fragment)
+	</description>
+	<url>https://github.com/luyanfei/umeditor-vaadin-js</url>
+	<scm>
+		<connection>scm:git:git@github.com:luyanfei/umeditor-vaadin-js.git</connection>
+		<developerConnection>scm:git:git@github.com:luyanfei/umeditor-vaadin-js.git</developerConnection>
+		<url>git@github.com:luyanfei/umeditor-vaadin-js.git</url>
+	</scm>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>luyanfei</id>
+			<name>吕焱飞</name>
+			<email>luyanfei78@163.com</email>
+		</developer>
+	</developers>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<vaadin.version>7.1.9</vaadin.version>
@@ -32,15 +64,15 @@
 			<version>${vaadin.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-client</artifactId>
-			<version>${vaadin.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>cn.jhc</groupId>
+			<artifactId>umeditor-fragment</artifactId>
+			<version>0.0.2</version>
 		</dependency>
 	</dependencies>
 	<build>
