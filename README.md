@@ -2,7 +2,15 @@ umeditor-vaadin-js
 ==================
 
 Vaadin wrapper for umeditor(https://github.com/campaign/umeditor). umeditor is the mini version of ueditor(http://ueditor.baidu.com/website/), which is a versatile rich text editor. umeditor has been used in http://tieba.baidu.com, and has proven to be an efficient editor. umeditor-vaadin-js dependends on umeditor-fragment(https://github.com/luyanfei/umeditor-fragment)
+## Maven
+```
+		<dependency>
+			<groupId>cn.jhc</groupId>
+			<artifactId>umeditor-vaadin-js</artifactId>
+			<version>0.0.1</version>
+		</dependency>
 
+```
 ## Example Code
 ```
 	        final VerticalLayout layout = new VerticalLayout();
